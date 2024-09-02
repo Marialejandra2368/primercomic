@@ -1,0 +1,611 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #170594;
+    display: flex;
+    font-family: 'Times New Roman', Times, serif;
+    position: fixed;  /*Permite que el header se que estatico y siempre se mantenga en el mismo lugar incluso despues de hacer scrool en la página*/
+    top: 0;
+    width: 100%;  
+    z-index: 100;
+}
+
+/*Estilos para el logo*/
+.enlace{
+    position: relative;
+    left: 2rem;
+}
+
+/* Estilos para la navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;  /*Permite que el elemento se posicione y sea más mas facil de mover en este caso para la derecha*/
+    left: 13em;   
+}
+nav li {
+    margin-right: 20px;
+    color:#251496;
+    transition: .5s;
+}
+
+nav li:last-child {
+    margin-right: 60px;
+}
+
+nav a {
+    color:#f6f0f0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: x-large;
+      
+}
+
+nav ul li {
+    display: inline-block;
+
+}
+
+/* Estilos para el botón de menú */
+.checkbtn {
+    font-size: 30px;
+    color: #e7dede;
+    cursor: pointer;
+    display: none;
+}
+
+/* Estilos para el menú desplegable en pantallas pequeñas */
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+        position: fixed;
+        top: 40px;
+        right: 20px;
+        margin-right: 3rem;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 30vh;
+        background-color: #452bf5;
+        padding: 1em;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    nav ul.show {
+        transform: translateY(0);
+    }
+
+    nav li {
+        margin-right: 0;
+    }
+
+    nav a {
+        font-size: 3.9em;
+    }
+
+    #check:checked ~ nav ul {
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para las secciones */
+#home {
+    background: linear-gradient( rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("../Portafolio/img/img_fondo_slider_curso.jpg");  /*Coloca la imagen de fondo*/
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    padding: 20px;
+}
+
+#home .imagen-perfil{
+    position: relative;
+    left: 16.5em;
+    margin-bottom: 20px;
+}
+
+#home .home-content-info{
+    background-color: #343bc4;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px; /* Restrict maximum width */
+    text-align: center;
+}
+
+
+#home .home-content-info h1{
+    position: relative;
+    left: 18rem;
+    top: -2em;
+    font-size: 35px;
+    white-space: nowrap;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#home .home-content-info p{
+    position: relative;
+    right: 40rem;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+#home .home-content-info h2{
+    white-space: nowrap;
+    position: relative;
+    top: 3em;
+    right: 12rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Adjustments for larger screens */
+@media (min-width: 1024px) {
+    #home .home-content-info {
+        flex-direction: row; /* Cambia a fila en pantallas grandes */
+        justify-content: space-around;
+        padding: 40px;
+        width: 70%;
+        height: 40vh;
+    }
+
+    #home .imagen-perfil {
+        margin-bottom: 0; /* Elimina el margen inferior en pantallas grandes */
+    }
+
+    #home .home-content-info h1 {
+        font-size: 35px;
+        margin-bottom: 0;
+    }
+
+    #home .home-content-info p {
+        font-size: 20px;
+    }
+
+    #home .home-content-info h2 {
+        font-size: 30px;
+    }
+}
+ 
+/* Adjustments for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #home .home-content-info {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 30px;
+        width: 80%;
+    }
+
+    #home .imagen-perfil {
+        margin-bottom: 0;
+    }
+
+    #home .home-content-info h1 {
+        font-size: 32px;
+    }
+
+    #home .home-content-info p {
+        font-size: 18px;
+    }
+
+    #home .home-content-info h2 {
+        font-size: 28px;
+    }
+}
+
+/* Adjustments for small screens */
+@media (max-width: 767px) {
+    #home .home-content-info {
+        width: 90%;
+        height: 35%;
+        flex-direction: column;  /* Asegura que se alineen en columna en pantallas pequeñas */
+        position: relative;
+        right: 6rem;
+    }
+
+    #home .imagen-perfil {
+        position: relative;
+        z-index: 1;
+        width: 110px; /* Ajusta el tamaño de la imagen */
+        height: 25%;
+    }
+
+    #home .home-content-info h1 {
+        font-size: 25px;
+        position: relative;
+        top: 3rem;
+
+    }
+
+    #home .home-content-info p {
+        font-size: 14px;
+        position: relative;
+    }
+
+    #home .home-content-info h2 {
+        font-size: 21px;
+        position: relative;
+        left: 1rem;
+    }
+}
+
+/*Estilos sobre mi*/
+#sobremi {
+    background-color: #251496;
+    color: #fff;
+    padding: 50px 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+#sobremi .sobremi-contenido {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+#sobremi .sobremi-contenido .about {
+    background-color: #452bf5;
+    border-radius: 30px;
+    margin: 50px auto;
+    padding: 40px;
+    display: flex;  /*Permite que el contenedor sea flexibe y se ajuste bien al momento de colocar el responsive*/
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out; /*Permite darle transicion al contenedor al momento de poner encima el cursor*/
+}
+
+#sobremi .sobremi-contenido .about:hover {
+    transform: translateY(-10px);  /*Lo que le permite al contenedor moverse hacia arriba en la transicion*/
+}
+
+#sobremi h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color:#f692ba;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+#sobremi p {
+    font-size: 1.2em; /*Tamaño de la letra */
+    line-height: 1.6; /*espacio entre cada linea de texto*/
+    margin-bottom: 30px;
+    text-align: justify; /*JUstifica el texto*/
+}
+
+#sobremi ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sobremi ul a {
+    color:#000000;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+#sobremi ul a i {
+    margin-right: 5px;
+}
+
+#sobremi ul a:hover {
+    color: #fe7ec9;  /*Color para el hover al momento de colocar el cursor encima de los ul*/
+}
+
+#sobremi strong {
+    font-weight: bold;
+    color:#f1ecec;
+}
+
+/*Estilos de los proyectos */
+#proyectos {
+    background-color: #7b69ee;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+#proyectos h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    color: #1b1919;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#proyectos h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #141313;
+    margin-top: 20px;
+}
+
+.galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.imagen-funda img, .imagen-raices img {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(14, 12, 12, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.imagen-funda img:hover, .imagen-raices img:hover {
+    transform: scale(1.05);
+}
+
+.galeria h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #0d0c0c;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.galeria p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #070707;
+    text-align: justify;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+#myButton {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ff5aa4;
+    color: white;
+    padding: 10px 20px;
+    border: none; /*Se le quita el border al boton */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#myButton:hover {
+    background-color: #fe7ec9;
+}
+
+/* Estilos detalles */
+.detalles {
+    background-color: #dfd6d6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.detalles h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    color: #0e0d0d;
+    margin-top: 20px;
+}
+
+.detalles ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.detalles li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #090101;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .galeria {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .detalles {
+        padding: 15px;
+    }
+}
+
+
+/* Ajustes en pantallas pequeñas */
+@media (max-width: 858px) {
+    #home, #about, #portafolio, #Proyectos {
+        width: 100%;
+        margin: 20px auto;
+    }
+}
+
+/* Estilos para el pie de página */
+footer {
+    background: #141212;
+    color: #f5eeee;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos para el contacto */
+#contact{
+    background-color: #3a62f2;
+    padding: 20px;
+    border: 1px solid #06113a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#formulario-contacto label {
+    margin-bottom: 10px;
+}
+
+#formulario-contacto input, #formulario-contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #170594;
+}
+
+#formulario-contacto button[type="submit"] {
+    background-color: #06113a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formulario-contacto button[type="submit"]:hover {
+    background-color: #3d8840;
+}
+
+#mensaje-enviado {
+    color: #00698f;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Estilos para las habilidades y barra de progreso */
+.barra-progreso {
+    width: 100%;
+    height: 20px;
+    background-color: #8bd4e1;
+    border-radius: 5px;
+    position: relative;
+}
+
+.barra-progreso .progreso {
+    width: 0%;
+    height: 100%;
+    background-color: #21bdcb;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+.habilidad {
+    margin-bottom: 20px;
+}
+
+.habilidad .nombre {
+    font-weight: bold;
+}
+
+/* Estilos para la imagen y contenido */
+.imagen-perfil, .imagen-funda, .imagen-raices {
+    padding: 10px;
+    align-items: center;
+}
+
+/* Estilos para enlaces activos y hover */
+li a.active, li a:hover {
+    background-color: #1c837c;
+    transition: 0.5s;
+}
+
+input[type="checkbox" i] {
+    display: none;
+}
+
+
+/* Estilos básicos para el botón de menú */
+.checkbtn {
+    display: none; /* Ocultar el botón por defecto */
+}
+
+/* Estilos del menú */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+/* Mostrar el botón de menú en dispositivos pequeños */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+    }
+
+    .checkbtn {
+        display: block;
+        cursor: pointer;
+    }
+
+    #check:checked ~ .navbar ul {
+        display: flex;
+    }
+}
+.logo{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+}
+
+/* Estilos para dispositivos extra pequeños */
+@media (max-width: 480px) {
+    nav a {
+        font-size: 1.2em;
+    }
+
+    #home h1, #home h2, #home p, #sobremi h2, #sobremi p {
+        font-size: 0.9em;
+    }
+}
+
+
